@@ -28,11 +28,4 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-jdbc')
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
-
-    compile 'mysql:mysql-connector-java:8.0.12'
-
-    compile 'javax.servlet:jstl:1.2'
-    compile 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.12'
-
-
 }

@@ -2,17 +2,17 @@
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page pageEncoding="utf-8" %>
 
-<html>
+<html lang="en">
 
 <body>
-
-Post List :
-<c:forEach items="${list}" var="row">
-    <c:out value="${row}"/> <br>
-</c:forEach>
-
+<c:url value="/resources/text.txt" var="url"/>
+<spring:url value="/resources/text.txt" htmlEscape="true" var="springUrl" />
+Spring URL: ${springUrl} at ${time}
+<br>
+JSTL URL: ${url}
+<br>
+Message: ${message}
 </body>
 
 </html>
