@@ -4,27 +4,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page pageEncoding="utf-8" %>
 
-<html>
+<%@include file="header.jsp"%>
 
-<body>
-<%@ include file="login.jsp"%>
 <h3> Post List </h3>
 
     <div id="list_area">
-        <table id="post_list_table">
+        <table id="post_list_table" class="table table-striped">
             <thead>
                 <tr>
-                    <th>no</th>
-                    <th>title</th>
-                    <th>writer</th>
-                    <th>count</th>
-                    <th>date</th>
+                    <th scope="col">no</th>
+                    <th scope="col">title</th>
+                    <th scope="col">writer</th>
+                    <th scope="col">count</th>
+                    <th scope="col">date</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${list}" var="post">
                 <tr>
-                    <td><a href="/post?post_id=${post.id_no}">${post.id_no}</a></td>
+                    <th scope="row"><a href="/post?post_id=${post.id_no}">${post.id_no}</a></th>
                     <td><a href="/post?post_id=${post.id_no}">${post.title}</a></td>
                     <td>${post.writer}</td>
                     <td>${post.count}</td>
@@ -33,8 +31,9 @@
                 </c:forEach>
             </tbody>
         </table>
+        <div>
+            <a class="btn btn-primary" href="/writePost">write</a>
+        </div>
     </div>
 
-</body>
-
-</html>
+<%@include file="footer.jsp"%>

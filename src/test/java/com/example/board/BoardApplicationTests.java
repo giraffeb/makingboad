@@ -15,32 +15,11 @@ import java.util.Map;
 @SpringBootTest
 public class BoardApplicationTests {
 
-	@Autowired
-	public BoardDao dao;
+    @Test
+    public void getString(){
+        String imgfile = "hello.jpg";
+        System.out.println(imgfile.substring(imgfile.length()-4, imgfile.length()));
 
+    }
 
-	@Test
-	public void contextLoads() {
-
-		Map<String, Object> params = new HashMap<>();
-		params.put("post_id", 1);
-
-		dao.getPost(params);
-	}
-
-	@Test
-	public void getList(){
-
-		List<Map<String, Object>> result = dao.getList();
-		System.out.println( result );
-
-	}
-
-
-	@Test
-	public void getPostparams(){
-
-
-
-	}
 }

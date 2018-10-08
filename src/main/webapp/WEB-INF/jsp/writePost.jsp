@@ -3,29 +3,20 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page pageEncoding="utf-8" %>
-
-<html>
-
-<body>
+<%@include file="header.jsp"%>
 
 <h3> Post Page </h3>
 
 <div id="">
     <form name="postForm" action="/writePost" method="POST">
-        <div id="title_aera">
-            <textarea name="title">
-
-            </textarea>
+        <div class="form-group" id="title_aera">
+            <input type="text" class="form-control" name="title" placeholder="Enter Title"></input>
         </div>
-        <div id="content_area">
-            <textarea name="content">
-
-            </textarea>
+        <div class="form-group" id="content_area">
+            <textarea class="form-control" name="content" placeholder="Enter Content"></textarea>
         </div>
-        <button type="submit">Send</button>
+        <button class="btn btn-primary" type="submit">Send</button>
     </form>
 </div>
 
-</body>
-
-</html>
+<%@include file="footer.jsp"%>

@@ -3,10 +3,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page pageEncoding="utf-8" %>
+<%@include file="header.jsp"%>
 
-<html>
-
-<body>
 
 <h3> Post Page </h3>
 
@@ -23,6 +21,4 @@
     </form>
 </div>
 
-</body>
-
-</html>
+<%@include file="footer.jsp"%>

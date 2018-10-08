@@ -39,7 +39,7 @@ public class BoardService {
         return boardDao.updatePost(params);
     }
 
-    public boolean loginCheck(Map<String, Object> params){
+    public Map<String, Object> loginCheck(Map<String, Object> params){
 
         return boardDao.loginCheck(params);
     }

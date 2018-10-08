@@ -4,23 +4,40 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page pageEncoding="utf-8" %>
 
-<html>
+<%@include file="header.jsp"%>
+    <style>
+        #content_area{
+            min-height: 200px;
+        }
+    </style>
 
-<body>
-    <h3> Post Page</h3>
+    <h4> Post Page</h4>
 
-    <div id="post_area">
-        <div id="title_area">
-            <strong>title : </strong><span>${post.title}</span><br>
-            <Strong>writer : </Strong><span>${post.writer}</span><br>
-            <strong>date : </strong><span>${post.writed_date}</span><br>
-            <strong>count : </strong><span>${post.count}</span><br>
+    <div class="container" id="post_area">
+        <div  id="title_area">
+            <div class="row">
+                <strong>title :</strong>
+                <span>${post.title}</span>
+            </div>
+            <div class="row">
+                <strong>writer :</strong>
+                <span>${post.writer}</span>
+            </div>
+            <div class="row">
+                <strong>date :</strong>
+                <span>${post.writed_date}</span>
+            </div>
+            <div class="row">
+                <strong>count :</strong>
+                <span>${post.count}</span>
+            </div>
         </div>
-        <div id="content_area">
+        <div class="row" id="content_area">
             ${post.content}
+        </div>
+        <div class="row">
+            <a class="btn btn-primary" href="/updatePost?post_id=${post.id_no}">modify</a>
         </div>
     </div>
 
-</body>
-
-</html>
+<%@include file="footer.jsp"%>

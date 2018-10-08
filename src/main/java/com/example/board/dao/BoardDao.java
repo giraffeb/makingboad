@@ -62,16 +62,15 @@ public class BoardDao {
         return true;
     }
 
-    public boolean loginCheck(Map<String, Object> params){
+    public Map<String, Object> loginCheck(Map<String, Object> params){
         boolean result = false;
 
         String user_id = (String)params.get("id");
         String user_pw = (String)params.get("pw");
 
-        Map<String, Object> row = jdbcTemplate.queryForMap("SELECT COUNT(*) as cnt " +
+        Map<String, Object> row = jdbcTemplate.queryForMap("SELECT COUNT(*) as cnt, user_id, user_no " +
                 "FROM user " +
                 "WHERE user_id = ? AND user_pw = ?", user_id, user_pw);
-        System.out.println(row);
 
         Long cnt = (Long)row.get("cnt");
 
@@ -81,8 +80,8 @@ public class BoardDao {
             result = true;
         }
 
-        System.out.println("RESULT : "+result);
+        row.put("result", result);
 
-        return result;
+        return row;
     }
 }
