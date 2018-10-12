@@ -6,7 +6,13 @@ import com.example.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpRequest;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -105,33 +111,48 @@ public class HomeController {
     }
 
     @RequestMapping(value="/login", method = RequestMethod.GET)
-    public String getLoginPage(Map<String, Object> map,
+    public String getLoginPage(Model model,
                                @RequestParam Map<String, Object> params){
 
         return "login";
     }
 
-    @RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
-    public String getLoginCheck(Map<String,Object> model,
-                                HttpSession session,
-                                @RequestParam Map<String, Object> params){
 
-        String jsp = "login";
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public UserDetailsService getLoginCheck(Map<String,Object> model,
+//                                HttpSession session,
+//                                @RequestParam Map<String, Object> params){
+//        System.out.println("Call ");
+//
+//
+//        UserDetails user =
+//                User.withDefaultPasswordEncoder()
+//                        .username("giraffeb")
+//                        .password("12345")
+//                        .roles("USER")
+//                        .build();
+//
+//
+//        return new InMemoryUserDetailsManager(user);
 
-        Map<String, Object> row = service.loginCheck(params);
-        boolean result = (boolean) row.get("result");
-
-        if(result == true){
-            session.setAttribute("loginStatus", result);
-            session.setAttribute("user_id", row.get("user_id"));
-            jsp = "redirect:/list";
-        }else{
-            model.put("result", "잘못된 계정 정보입니다. ");
-        }
-
-
-        return jsp;
-    }
+//        String jsp = "login";
+//        System.out.println("login POST CALL");
+//
+//        Map<String, Object> row = service.loginCheck(params);
+//        boolean result = (boolean) row.get("result");
+//        System.out.println(row);
+//
+//        if(result == true){
+//            session.setAttribute("loginStatus", result);
+//            session.setAttribute("user_id", row.get("user_id"));
+//            jsp = "redirect:/list";
+//        }else{
+//            model.put("result", "잘못된 계정 정보입니다. ");
+//        }
+//
+//
+//        return jsp;
+//    }
 
     @RequestMapping(value = "/uploadfiles")
     public String uploadFiles(Map<String, Object> model){
@@ -161,5 +182,10 @@ public class HomeController {
         }
 
         return "redirect:/list";
+    }
+
+    @RequestMapping(value = "/hello")
+    public String hello(){
+        return "hello";
     }
 }

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%--<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page pageEncoding="utf-8" %>
 
+<html>
 <style>
     html{
         width : 800px;
@@ -12,10 +13,11 @@
 
 </style>
 
-<html>
-
 <head>
     <title>Hello JSP board</title>
+
+    <script src="/jquery-3.3.1/jquery.js"></script>
+
     <!-- 합쳐지고 최소화된 최신 CSS -->
     <link rel="stylesheet" href="/bootstrap-3.3.2-dist/css/bootstrap.css">
 
@@ -23,8 +25,7 @@
     <link rel="stylesheet" href="/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
 
     <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="hbootstrap-3.3.2-dist/js/bootstrap.js"></script>
+    <script src="/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
 
-    <%@include file="login.jsp"%>
 </head>
 <body>
