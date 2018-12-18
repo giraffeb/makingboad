@@ -4,15 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page pageEncoding="utf-8" %>
 
-<html>
+<%@ include file="header.jsp"%>
 
-<body>
 
-Post List :
-<c:forEach items="${list}" var="row">
-    <c:out value="${row}"/> <br>
-</c:forEach>
-
-</body>
-
-</html>
+<%@ include file="footer.jsp"%>
