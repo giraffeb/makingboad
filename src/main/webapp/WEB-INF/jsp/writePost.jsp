@@ -8,7 +8,7 @@
 <h3> Post Page </h3>
 
 <div id="">
-    <form method="post" action="/writePost">
+    <form method="post" action="writePost">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <div class="form-row">
             <div class="form-group col">

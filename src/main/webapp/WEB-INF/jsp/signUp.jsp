@@ -13,7 +13,7 @@
         <h3>회원가입 페이지</h3>
     </div>
     <div id="sign_up_area">
-        <form action="/signup" method="post" enctype="application/x-www-form-urlencoded">
+        <form action="signup" method="post" enctype="application/x-www-form-urlencoded">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <div class="form-group row">
                 <label for="username" class="col-form-label col-sm-3">아이디</label>

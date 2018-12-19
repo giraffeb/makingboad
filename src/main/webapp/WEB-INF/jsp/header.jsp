@@ -37,7 +37,7 @@
     <div id="nav_area">
         <nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
 
-            <a class="navbar-brand" href="/">SimpleBoard</a>
+            <a class="navbar-brand" href="">SimpleBoard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -45,12 +45,12 @@
                 <ul class="navbar-nav">
                     <c:if test="${sessionScope.username eq null}">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/login">login <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="login">login <span class="sr-only">(current)</span></a>
                     </li>
                     </c:if>
                     <c:if test="${sessionScope.username ne null}">
                         <li class="nav-item">
-                        <form id="logout" action="/logout" method="post" enctype="application/x-www-form-urlencoded">
+                        <form id="logout" action="logout" method="post" enctype="application/x-www-form-urlencoded">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                         <a class="nav-link" href='javascript:document.getElementById("logout").submit();'>logout <span class="sr-only">logout</span></a>
                         </form>

@@ -41,16 +41,16 @@
     <div id="button_area" class="row">
         <c:if test="${post.writer.username eq sessionScope.username}">
             <div class="col-lg-1">
-                <a class="btn btn-primary btn-sm" href="/updatePost?post_id=${post.post_id}">수정하기</a>
+                <a class="btn btn-primary btn-sm" href="updatePost?post_id=${post.post_id}">수정하기</a>
             </div>
             <div class="col-lg-1">
-                <form method="post" action="/deletePost?post_id=${post.post_id}">
+                <form method="post" action="deletePost?post_id=${post.post_id}">
                     <button class="btn btn-primary btn-sm" type="submit" value="삭제하기">삭제하기</button>
                 </form>
             </div>
         </c:if>
         <div class="col-lg-1 offset-lg-9">
-            <a class="btn btn-primary btn-sm" href="/list">목록</a>
+            <a class="btn btn-primary btn-sm" href="list">목록</a>
         </div>
 
     </div>

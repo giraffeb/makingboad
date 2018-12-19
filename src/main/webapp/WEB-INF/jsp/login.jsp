@@ -4,7 +4,7 @@
 <%@ include file="header.jsp"%>
 <div>
     <h3>login Form</h3>
-    <form action="/login" method="post" >
+    <form action="login" method="post" >
         <div class="form-group mx-sm-3 mb-2">
             <label >ID : </label>
             <input type="text" class="form-control" placeholder="Enter ID" name="username">

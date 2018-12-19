@@ -9,7 +9,7 @@
 <h3> Post Page </h3>
 
 <div id="update_area">
-    <form action="/updatePost" method="POST" class="form-row">
+    <form action="updatePost" method="POST" class="form-row">
         <input type="hidden" name="post_id" value="${post.post_id}">
         <table class="table">
             <tbody>
