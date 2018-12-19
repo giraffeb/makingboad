@@ -16,8 +16,9 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'war'
 
+archivesBaseName = 'makingboard'
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+//version = '0.0.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
@@ -83,6 +84,6 @@ dependencies {
 task copyClientLoc(type: Copy) {
     from "build/libs/"
     into "build/libs/temp/"
-    include rootProject.name+".war"
+    include archivesBaseName+"war"
     fileMode = 0770
 }
