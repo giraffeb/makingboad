@@ -1,3 +1,4 @@
+<%@ page import="java.io.File" %>
 <!DOCTYPE html>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -37,7 +38,7 @@
     <div id="nav_area">
         <nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
 
-            <a class="navbar-brand" href="">SimpleBoard</a>
+            <a class="navbar-brand" href="/makingboard">SimpleBoard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

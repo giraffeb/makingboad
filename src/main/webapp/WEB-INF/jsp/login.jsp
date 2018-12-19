@@ -16,8 +16,8 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div class="text-center">
             <button type="submit" class="btn btn-primary">보내기</button>
-            <a class="btn btn-primary text-white" href="/list">취소</a>
-            <a class="btn btn-danger text-white" href="/signup">회원가입</a>
+            <a class="btn btn-primary text-white" href="list">취소</a>
+            <a class="btn btn-danger text-white" href="signup">회원가입</a>
         </div>
     </form>
 </div>
