@@ -84,6 +84,6 @@ dependencies {
 task copyClientLoc(type: Copy) {
     from "build/libs/"
     into "build/libs/temp/"
-    include archivesBaseName+"war"
+    include archivesBaseName+".war"
     fileMode = 0770
 }
