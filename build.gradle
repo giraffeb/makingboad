@@ -14,36 +14,75 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
+
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
 
 dependencies {
+
+
     compile('org.springframework.boot:spring-boot-starter-jdbc')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.1.1.RELEASE'
+//    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.0.5.RELEASE'
+    compile("org.hibernate.validator:hibernate-validator")
 
     // https://mvnrepository.com/artifact/com.querydsl/querydsl-jpa
     compile group: 'com.querydsl', name: 'querydsl-jpa', version: '4.2.1'
     // https://mvnrepository.com/artifact/com.querydsl/querydsl-apt
     compile group: 'com.querydsl', name: 'querydsl-apt', version: '4.2.1'
 
-    compile("org.springframework.boot:spring-boot-starter-security")
+//    compile("org.springframework.boot:spring-boot-starter-security")
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
+//    compile group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.1.2.RELEASE'
+
+
+    // property encryption ->
+    compile group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '2.1.0'
+
+
+
+
+
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    // https://mvnrepository.com/artifact/org.assertj/assertj-core
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
+
 
     compile 'mysql:mysql-connector-java:8.0.12'
 
     compile 'javax.servlet:jstl:1.2'
     compile 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.12'
+    //hibernate test bind error
+    compile 'javax.xml.bind:jaxb-api:2.3.0'
+
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
 
 
+}
+//파일 복사 권한 설정용
+task copyClientLoc(type: Copy) {
+    from "build/libs/"
+    into "build/libs/temp/"
+    include rootProject.name+".war"
+    fileMode = 0770
 }
