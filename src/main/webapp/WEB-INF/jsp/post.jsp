@@ -8,33 +8,33 @@
 <%@include file="header.jsp"%>
 <style>
     table{
-        height: 450px;
+        min-height: 450px;
     }
 </style>
 <div>
-    <table class="table table-striped">
-        <thead class="thead-light">
+    <table class="table">
+        <thead>
             <tr class="row">
-                <th class="col-2 text-center"><span>title: </span></th>
+                <td class="col-2 text-center"><span><strong>title: </strong></span></td>
                 <td class="col"><span><strong>${post.title}</strong></span></td>
             </tr>
             <tr class="row">
-                <th class="col-2 text-center"><span>date: </span></th>
+                <td class="col-2 text-center"><span><strong>date: </strong></span></td>
                 <td class="col">${fn:substring(post.registeredDate,0,10)}</td>
             </tr>
             <tr class="row">
-                <th class="col-2 text-center">writer: </th>
+                <td class="col-2 text-center"><span><strong>writer: </strong></span></td>
                 <td class="col">${post.writer.username}</td>
             </tr>
             <tr class="row">
-                <th class="col-2 text-center">view: </th>
+                <td class="col-2 text-center"><span><strong>view: </strong></span></td>
                 <td class="col">${post.viewCount}</td>
             </tr>
         </thead>
         <tbody>
             <tr class="row">
-                <th></th>
-                <td>${post.content}</td>
+                <td class="col-2"></td>
+                <td class="col">${post.content}</td>
             </tr>
         </tbody>
     </table>
