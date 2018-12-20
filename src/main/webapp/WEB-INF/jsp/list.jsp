@@ -6,26 +6,25 @@
 <%@ include file="header.jsp"%>
 
 <h3> 리스트페이지 </h3>
-
     <div id="list_area" style="background-color: white;" class="container">
-        <table id="post_list_table" class="table table-hover table-striped">
+        <table id="post_list_table" class="table table-hover table-striped ">
             <thead>
                 <tr class="row">
-                    <th scope="col" class="col-sm-1">no</th>
-                    <th scope="col" class="col-sm-6">title</th>
-                    <th scope="col" class="col-sm-2">writer</th>
-                    <th scope="col" class="col-sm-1">count</th>
-                    <th scope="col" class="col-sm-2">date</th>
+                    <th scope="col" class="col-1">no</th>
+                    <th scope="col" class="col-6">title</th>
+                    <th scope="col" class="col-2">writer</th>
+                    <th scope="col" class="col-1 d-none d-sm-table-cell">count</th>
+                    <th scope="col" class="col-2 d-none d-sm-table-cell">date</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${list}" var="post">
                 <tr class="row" href="post?post_id=${post.post_id}">
-                    <th scope="row" class="col-sm-1"><a href="post?post_id=${post.post_id}">${post.post_id}</a></th>
-                    <td class="col-sm-6"><a href="post?post_id=${post.post_id}">${post.title}</a></td>
-                    <td class="col-sm-2">${post.writer.username}</td>
-                    <td class="col-sm-1">${post.viewCount}</td>
-                    <td class="col-sm-2">${fn:substring(post.registeredDate,0,10)}</td>
+                    <th scope="row" class="col-1"><a href="post?post_id=${post.post_id}">${post.post_id}</a></th>
+                    <td class="col-6"><a href="post?post_id=${post.post_id}">${post.title}</a></td>
+                    <td class="col-2">${post.writer.username}</td>
+                    <td class="col-1 d-none d-sm-table-cell">${post.viewCount}</td>
+                    <td class="col-2 d-none d-sm-table-cell">${fn:substring(post.registeredDate,0,10)}</td>
                 </tr>
                 </c:forEach>
             </tbody>

@@ -14,19 +14,19 @@
         <table class="table">
             <tbody>
                 <tr class="row">
-                    <td class="col-sm-2">title :</td>
-                    <td class="col"><input name="title" class="col" type="text" value="${post.title}"/></td>
+                    <th class="col-xs-2">title :</th>
+                    <td class="col"><input name="title" class="form-control" type="text" value="${post.title}"/></td>
                 </tr>
                 <tr class="row">
-                    <td class="col-sm-2">writer :</td>
+                    <th class="col-xs-2">writer :</th>
                     <td class="col">${post.writer.username}</td>
                 </tr>
                 <tr class="row">
-                    <td class="col-sm-2">view :</td>
+                    <th class="col-xs-2">view :</th>
                     <td class="col">${post.viewCount}</td>
                 </tr>
                 <tr class="row">
-                    <td class="col-sm-2"></td>
+                    <td class="col-xs-2"></td>
                     <td class="col"><textarea name="content" style="resize:none; height: 250px;"  class="form-control" >${post.content}</textarea></td>
                 </tr>
                 <tr>
