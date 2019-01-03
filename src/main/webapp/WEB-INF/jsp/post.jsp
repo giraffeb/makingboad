@@ -56,7 +56,7 @@
     </div>
     <div id="comments_area">
         <div>
-            <form action="/postComments" method="post">
+            <form action="postComments" method="post">
             <input type="hidden" name="post_id" value="${post.post_id}">
             <label for="comments_content">댓글작성하기</label>
             <div class="input-group mb-3">
