@@ -1,4 +1,8 @@
 # springboot & jsp & mysql 간단한 게시판 기능 구현해보기
+
+## 0. 접속 주소
+[https://giraffeb.org/makingboard](https://giraffeb.org/makingboard)
+
 ## 1. 목표
 springboot, jsp, mysql을 이용해서 간단한 게시판 기능을 구현한다.
 다시 구현하면서 새로운 점, 익숙하지 않은 점을 정리한다.
