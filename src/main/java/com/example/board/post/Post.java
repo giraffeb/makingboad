@@ -13,6 +13,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "POST_ID")
     private int post_id;
 
     @ManyToOne
@@ -22,7 +23,7 @@ public class Post {
     @Column(nullable = false)
     private String title;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     @Column(columnDefinition = "INT DEFAULT 0")

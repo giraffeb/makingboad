@@ -1,8 +1,7 @@
 package com.example.board.post;
 
-import com.example.board.Users.UserRepository;
+import com.example.board.Users.UsersRepository;
 import com.example.board.Users.Users;
-import com.querydsl.core.util.MathUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ public class PostService {
     PostRepository postRepository;
 
     @Autowired
-    UserRepository userRepository;
+    UsersRepository userRepository;
 
     public List<Post> getPostAll(Map<String, Object> parmas){
 

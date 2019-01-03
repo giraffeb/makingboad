@@ -54,6 +54,32 @@
         </div>
 
     </div>
+    <div id="comments_area">
+        <div>
+            <form action="/postComments" method="post">
+            <input type="hidden" name="post_id" value="${post.post_id}">
+            <label for="comments_content">댓글작성하기</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">${sessionScope.username}</span>
+                </div>
+                <input type="text" class="form-control" id="comments_content" name="comments_content" aria-describedby="basic-addon3">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">작성하기</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        <div>
+            <c:forEach var="comments" items="${comments_list}">
+            <div class="row">
+                <div class="col-2">${comments.writer.username}</div>
+                <div class="col-10">${comments.content}</div>
+            </div>
+            </c:forEach>
+        </div>
+
+    </div>
 
 </div>
 

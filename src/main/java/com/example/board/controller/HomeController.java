@@ -1,7 +1,7 @@
 package com.example.board.controller;
 
 
-import com.example.board.Users.UserRepository;
+import com.example.board.Users.UsersRepository;
 import com.example.board.post.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class HomeController {
 
     @Autowired
-    UserRepository userRepository;
+    UsersRepository userRepository;
 
     @Autowired
     @Qualifier("postService")

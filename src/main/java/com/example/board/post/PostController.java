@@ -1,6 +1,7 @@
 package com.example.board.post;
 
 
+import com.example.board.comments.CommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ public class PostController {
 
     @Autowired
     PostService postService;
+
+    @Autowired
+    CommentsRepository commentsRepository;
 
 
     @GetMapping(value = {"/", "/list"})
@@ -46,7 +50,10 @@ public class PostController {
             return "redirect:/";
         }
 
+
+
         model.addAttribute("post", post);
+        model.addAttribute("comments_list", commentsRepository.findAllByPost(post));
 
         return "post";
     }

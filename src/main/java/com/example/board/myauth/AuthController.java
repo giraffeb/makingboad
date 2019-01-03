@@ -1,10 +1,9 @@
 package com.example.board.myauth;
 
 
-import com.example.board.Users.UserRepository;
+import com.example.board.Users.UsersRepository;
 import com.example.board.Users.Users;
 import com.example.board.Users.UsersRequestDto;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Map;
-import java.util.Optional;
 
 @Controller
 public class AuthController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UsersRepository userRepository;
 
 
     @GetMapping("/login")
