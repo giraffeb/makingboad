@@ -44,6 +44,7 @@ public class UserTest {
 
 
     @Test
+    @Transactional
     public void 회원가입하기() throws Exception {
         mvc.perform(
                 post("/signup")
