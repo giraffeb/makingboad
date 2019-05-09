@@ -2,6 +2,8 @@ package com.example.board.post;
 
 
 import com.example.board.Users.Users;
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -9,6 +11,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@Accessors(chain = true)
 public class Post {
 
     @Id
@@ -47,60 +51,4 @@ public class Post {
 
 
 
-    //setter, getter
-    public int getPost_id() {
-        return post_id;
-    }
-
-    public void setPost_id(int post_id) {
-        this.post_id = post_id;
-    }
-
-    public Users getWriter() {
-        return writer;
-    }
-
-    public void setWriter(Users writer) {
-        this.writer = writer;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public int getViewCount() {
-        return viewCount;
-    }
-
-    public void setViewCount(int viewCount) {
-        this.viewCount = viewCount;
-    }
-
-    public Timestamp getRegisteredDate() {
-        return registeredDate;
-    }
-
-    public void setRegisteredDate(Timestamp registeredDate) {
-        this.registeredDate = registeredDate;
-    }
-
-    public Timestamp getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(Timestamp modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
 }

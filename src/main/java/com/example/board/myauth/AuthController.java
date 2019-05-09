@@ -4,6 +4,8 @@ package com.example.board.myauth;
 import com.example.board.Users.UsersRepository;
 import com.example.board.Users.Users;
 import com.example.board.Users.UsersRequestDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +22,13 @@ import java.util.Map;
 @Controller
 public class AuthController {
 
+    Logger logger = LoggerFactory.getLogger(AuthController.class);
+
     @Autowired
     private UsersRepository userRepository;
+
+    @Autowired
+    private AuthService authService;
 
 
     @GetMapping("/login")
@@ -39,16 +46,24 @@ public class AuthController {
                                HttpSession session){
         String username = (String)params.get("username");
         String password = (String)params.get("password");
+        Users targetUsers = new Users().setUsername(username).setPassword(password);
 
-        Users loginUser = userRepository.findUserByUsername(username).get();
-        if(loginUser != null){
-            if(loginUser.getPassword().equals(password)){
-                session.setAttribute("username", username);
-                return "redirect:/";
-            }
+
+        String result = "login";
+
+        if(authService.checkLogin(targetUsers)){
+            session.setAttribute("username", username);
+            result =  "redirect:/";
         }
 
-        return "login";
+//        if(loginUser != null){
+//            if(loginUser.getPassword().equals(password)){
+//                session.setAttribute("username", username);
+//                return "redirect:/";
+//            }
+//        }
+
+        return result;
     }
 
     @PostMapping("/logout")
@@ -70,6 +85,7 @@ public class AuthController {
     public String signUpPost(@Valid @ModelAttribute("users") UsersRequestDto usersRequestDto,
                              BindingResult result,
                              Model model){
+
         if(result.hasErrors()){
             result.getFieldErrors().stream()
                     .forEach(e->model.addAttribute(e.getField(), e.getDefaultMessage()));
@@ -82,8 +98,6 @@ public class AuthController {
             return "signUp";
         }
         userRepository.save(usersRequestDto.toEntity());
-
-
         return "";
     }
 

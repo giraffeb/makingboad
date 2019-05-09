@@ -2,6 +2,8 @@ package com.example.board.post;
 
 import com.example.board.Users.UsersRepository;
 import com.example.board.Users.Users;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ import java.util.Map;
 
 @Service
 public class PostService {
+
+    private static Logger logger = LoggerFactory.getLogger(PostService.class);
 
     @Autowired
     PostRepository postRepository;
@@ -60,8 +64,14 @@ public class PostService {
     public void updatePost(Map<String, Object> params,
                              HttpSession session) throws Exception{
 
+
         String username = (String) session.getAttribute("username");
+
+        logger.debug("USERNAME -> "+username);
+        logger.debug("SESSION -> "+session);
+        logger.debug("PARAMS ->"+params);
         Users user = userRepository.findUserByUsername(username).get();
+
 
         String title = (String)params.get("title");
         String content = (String)params.get("content");

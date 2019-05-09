@@ -1,13 +1,16 @@
 package com.example.board.Users;
 
 
-import org.hibernate.annotations.ColumnDefault;
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@Accessors(chain = true)
 public class Users {
 
     @Id
@@ -35,43 +38,4 @@ public class Users {
         this.password = password;
     }
 
-    public int getUserNo() {
-        return userNo;
-    }
-
-    public void setUserNo(int userNo) {
-        this.userNo = userNo;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Timestamp getRegisteredDate() {
-        return registeredDate;
-    }
-
-    public void setRegisteredDate(Timestamp registeredDate) {
-        this.registeredDate = registeredDate;
-    }
-
-    public boolean isEnabled() {
-        return isEnabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        isEnabled = enabled;
-    }
 }

@@ -1,7 +1,7 @@
 //package com.example.board;
 //
 //import com.example.board.post.PostRepository;
-//import com.example.board.Users.UserRepository;
+//import com.example.board.Users.UsersRepository;
 //import com.example.board.dao.UserRolesRepository;
 //import com.example.board.post.Post;
 //import com.example.board.domain.UserRoles;
@@ -16,7 +16,7 @@
 //public class DummyData {
 //
 //    @Autowired
-//    UserRepository userRepository;
+//    UsersRepository userRepository;
 //
 //    @Autowired
 //    UserRolesRepository rolesRepository;
