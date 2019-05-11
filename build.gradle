@@ -5,8 +5,12 @@ plugins{
     id 'io.spring.dependency-management' version '1.0.7.RELEASE'
     id 'war'
     id 'groovy'
-    
+
+    id "io.freefair.lombok" version "3.4.0"
+
     id 'jacoco'
+
+    id "net.saliman.cobertura" version "2.6.1"
     id 'com.github.kt3k.coveralls' version '2.8.2'
 }
 
@@ -63,10 +67,6 @@ dependencies {
     testCompile group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
 
     developmentOnly group: 'org.springframework.boot', name: 'spring-boot-devtools'
-
-    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
-
-
 }
 
 jacocoTestReport {
@@ -76,12 +76,8 @@ jacocoTestReport {
     }
 }
 
-check.dependsOn jacocoTestReport
 
-coveralls {
-    jacocoReportPath 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
-}
-
+cobertura.coverageFormats = ['html', 'xml'] // coveralls plugin depends on xml format report
 
 //파일 복사 권한 설정용
 task copyClientLoc(type: Copy) {
@@ -90,5 +86,6 @@ task copyClientLoc(type: Copy) {
     include archivesBaseName+".war"
     fileMode = 0770
 }
+
 
 
