@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/giraffeb/makingboad.svg?branch=master)](https://travis-ci.org/giraffeb/makingboad)
 [![codecov](https://codecov.io/gh/giraffeb/makingboad/branch/master/graph/badge.svg)](https://codecov.io/gh/giraffeb/makingboad)
+[![Coverage Status](https://coveralls.io/repos/github/giraffeb/makingboad/badge.svg)](https://coveralls.io/github/giraffeb/makingboad)
 
 # springboot & jsp & mysql 간단한 게시판 기능 구현해보기
 
