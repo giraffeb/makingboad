@@ -39,7 +39,7 @@ public class AuthTest {
     public void 로그인_테스트() throws Exception {
         mvc.perform(post("/login")
                 .param("username", "giraffeb")
-                .param("password","giraffeb"))
+                .param("password","hello!2345"))
                 .andExpect(status().is(302))
                 .andDo(print());
     }
