@@ -105,7 +105,8 @@ public class AuthController {
             return "signUp";
         }
         userRepository.save(usersRequestDto.toEntity());
-        return "";
+
+        return "redirect:/";
     }
 
 
