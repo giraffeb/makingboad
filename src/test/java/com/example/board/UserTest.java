@@ -50,7 +50,7 @@ public class UserTest {
                 post("/signup")
                 .param("username",this.testUsername)
                 .param("password", this.testPassword)
-                ).andExpect(status().isOk())
+                ).andExpect(status().is3xxRedirection())
                 .andDo(print());
     }
 
