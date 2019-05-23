@@ -28,6 +28,7 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 configurations {
@@ -70,6 +71,17 @@ dependencies {
     testCompile group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
 
     developmentOnly group: 'org.springframework.boot', name: 'spring-boot-devtools'
+
+
+//    // https://mvnrepository.com/artifact/com.h2database/h2
+//    testCompile group: 'com.h2database', name: 'h2', version: '1.4.197'
+    
+    //swagger
+    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
 }
 
 jacocoTestReport {
@@ -79,8 +91,8 @@ jacocoTestReport {
     }
 }
 
-
 cobertura.coverageFormats = ['html', 'xml'] // coveralls plugin depends on xml format report
+
 
 //파일 복사 권한 설정용
 task copyClientLoc(type: Copy) {
@@ -89,6 +101,8 @@ task copyClientLoc(type: Copy) {
     include archivesBaseName+".war"
     fileMode = 0770
 }
+
+
 
 
 

@@ -20,6 +20,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         if(session.getAttribute("username") == null){
             response.sendRedirect("login");
         }
+
         return true;
     }
 

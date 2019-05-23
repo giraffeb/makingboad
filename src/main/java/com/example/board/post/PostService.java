@@ -60,6 +60,25 @@ public class PostService {
 
     }
 
+    public Post getPostRest(Integer postId,
+                        HttpSession session) throws Exception{
+
+        if(postId == null){
+            return null;
+        }
+
+        Post post = postRepository.findById(postId).get();
+        String username = (String) session.getAttribute("username");
+
+        if(!post.getWriter().getUsername().equals(username)){
+            post.setViewCount(post.getViewCount()+1);
+            postRepository.save(post);
+        }
+
+        return post;
+
+    }
+
 
     public void updatePost(Map<String, Object> params,
                              HttpSession session) throws Exception{
@@ -87,13 +106,17 @@ public class PostService {
     }
 
     public void deletePost(Map<String,Object> params, HttpSession session) {
+
         int post_id = Integer.parseInt((String)params.get("post_id"));
 
         Post thisPost = postRepository.findById(post_id).get();
-
+        logger.debug(thisPost.toString());
         String username = (String)session.getAttribute("username");
+
+        logger.debug("#SESSION NAME->"+username);
         if(thisPost.getWriter().getUsername().equals(username)){
-            postRepository.delete(thisPost);
+            postRepository.deleteById(post_id);
+
         }
     }
 

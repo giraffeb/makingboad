@@ -2,6 +2,7 @@ package com.example.board.post;
 
 
 import com.example.board.Users.Users;
+import com.example.board.comments.Comments;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Data
@@ -38,6 +40,7 @@ public class Post {
 
     @UpdateTimestamp
     private Timestamp modifiedDate;
+
 
     //Constructor
     public Post() {
