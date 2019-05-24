@@ -35,4 +35,16 @@ public class CommentsService {
         commentsRepository.save(comments);
 
     }
+
+
+    public boolean deleteComments(int comment_id, HttpSession session){
+        boolean status = false;
+
+        if(session.getAttribute("username") != null){
+            commentsRepository.deleteById(comment_id);
+            status = true;
+        }
+
+        return status;
+    }
 }

@@ -77,7 +77,16 @@
             <c:forEach var="comments" items="${comments_list}">
             <div class="row">
                 <div class="col-2">${comments.writer.username}</div>
-                <div class="col-10">${comments.content}</div>
+                <div class="col-8">${comments.content}</div>
+
+                <c:if test="${sessionScope.username eq comments.writer.username}">
+                    <form action="deleteComments?comment_id=${comments.comments_id}" method="post">
+                        <input type="hidden" name="post_id" value="${post.post_id}">
+                    <div class="col-2">
+                        <button class="btn btn-outline-secondary" type="submit">삭제</button>
+                    </div>
+                    </form>
+                </c:if>
             </div>
             </c:forEach>
         </div>

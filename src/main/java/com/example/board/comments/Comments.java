@@ -13,6 +13,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 @Table(name = "Comments")
 @Data
@@ -24,7 +26,7 @@ public class Comments {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int comments_id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(referencedColumnName = "POST_ID", foreignKey = @ForeignKey(name = "post_comment_key"))
     private Post post;

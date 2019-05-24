@@ -41,15 +41,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-//    public String getLoginPost(@RequestParam Map<String, Object> params,
-//                               Model model,
-//                               HttpSession session){
 
     public String getLoginPost(@Valid @ModelAttribute("users") UsersRequestDto usersRequestDto,
                                 BindingResult result, HttpSession session, Model model){
-//        String username = (String)usersRequestDto.get("username");
-//        String password = (String)params.get("password");
-
         String username = usersRequestDto.getUsername();
         String password = usersRequestDto.getPassword();
 
@@ -62,13 +56,6 @@ public class AuthController {
             session.setAttribute("username", username);
             resultPage =  "redirect:/";
         }
-
-//        if(loginUser != null){
-//            if(loginUser.getPassword().equals(password)){
-//                session.setAttribute("username", username);
-//                return "redirect:/";
-//            }
-//        }
 
         return resultPage;
     }

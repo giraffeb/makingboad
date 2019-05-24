@@ -25,4 +25,12 @@ public class CommentsController {
 
         return "redirect:/post?post_id="+params.get("post_id");
     }
+
+    @PostMapping("/deleteComments")
+    public String deleteComment(@RequestParam int comment_id, @RequestParam int post_id, HttpSession session){
+        commentsService.deleteComments(comment_id, session);
+
+        return "redirect:/post?post_id="+post_id;
+    }
+
 }
