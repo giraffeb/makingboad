@@ -10,6 +10,9 @@
     table{
         min-height: 450px;
     }
+    td{
+        white-space: pre;
+    }
 </style>
 <div>
     <table class="table">

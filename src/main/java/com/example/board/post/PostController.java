@@ -86,7 +86,6 @@ public class PostController {
     @PostMapping("/updatePost")
     public String updatePost(@RequestParam Map<String, Object> params,
                           HttpSession session){
-        System.out.println(params);
         try{
             postService.updatePost(params, session);
         }catch (Exception e){
@@ -117,7 +116,6 @@ public class PostController {
     @PostMapping("/writePost")
     public String writePost(@RequestParam Map<String, Object> params,
                             HttpSession session){
-        System.out.println(params);
         postService.writePost(params, session);
 
         return "redirect:/";
