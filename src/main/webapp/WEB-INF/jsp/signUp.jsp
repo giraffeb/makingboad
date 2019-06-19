@@ -16,9 +16,15 @@
         <form action="signup" method="post" enctype="application/x-www-form-urlencoded">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <div class="form-group row">
-                <label for="username" class="col-form-label col-sm-3">아이디</label>
-                <input id="username" name="username" type="text" class="form-control col-sm-6" >
+                <label for="userId" class="col-form-label col-sm-3">유저아이디</label>
+                <input id="userId" name="userId" type="text" class="form-control col-sm-6" >
                 <small id="id_help" class="col-sm-6 form-text text-muted">알파벳 소문자 또는 숫자포함 4~15자로 설정해주세요.</small>
+                <label for="userId" class="col-form-label col-sm-6 offset-sm-4">${username}</label>
+            </div>
+            <div class="form-group row">
+                <label for="username" class="col-form-label col-sm-3">유저이름</label>
+                <input id="username" name="username" type="text" class="form-control col-sm-6" >
+                <small id="username_help" class="col-sm-6 form-text text-muted">알파벳 소문자 또는 숫자포함 4~15자로 설정해주세요.</small>
                 <label for="username" class="col-form-label col-sm-6 offset-sm-4">${username}</label>
             </div>
             <div class="form-group row">

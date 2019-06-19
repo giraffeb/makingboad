@@ -8,35 +8,51 @@
 <%@ page pageEncoding="utf-8" %>
 
 <html>
-
-
+<%--<%@ include file="login.jsp"%>--%>
 <head>
     <title>Hello JSP board</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/assets/css/docs.min.css" rossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async deferr></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous" async defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" async defer></script>
+
+    <%--    google oauth api--%>
+    <script src="https://apis.google.com/js/platform.js" defer></script>
+    <%-- google api javascript code--%>
+    <script src="/js/google_oauth_main.js" charset="utf-8" defer onload="googleInit()"></script>
+
+    <%--facebook oauth api--%>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.3&appId=2208086505911469&autoLogAppEvents=1"></script>
+    <script src="/js/facebook_oauth_main.js" charset="utf-8" defer onload="facebookInit()"></script>
+    <%--  oauth api  --%>
+    <script src="/js/oauth_main.js" charset="utf-8" defer></script>
+
+    <%--  style  --%>
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/assets/css/docs.min.css" rossorigin="anonymous"  async defer>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"  async defer>
+
+
 
     <style type="text/css">
         /*#main_area{*/
-            /*width: 850px;*/
+        /*width: 850px;*/
         /*}*/
 
         /*#content_area{*/
-            /*padding: 50px;*/
-            /*height: 700px;*/
-            /*z-index: 0;*/
+        /*padding: 50px;*/
+        /*height: 700px;*/
+        /*z-index: 0;*/
         /*}*/
 
     </style>
 
 </head>
+
+
 <body>
 <header>
     <div id="nav_area">
@@ -48,16 +64,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <c:if test="${sessionScope.username eq null}">
+                    <c:if test="${cookie.mymymy eq null}">
                     <li class="nav-item active">
                         <a class="nav-link" href="login">login <span class="sr-only">(current)</span></a>
                     </li>
                     </c:if>
-                    <c:if test="${sessionScope.username ne null}">
+                    <c:if test="${cookie.mymymy ne null}">
                         <li class="nav-item">
                         <form id="logout" action="logout" method="post" enctype="application/x-www-form-urlencoded">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                        <a class="nav-link" href='javascript:document.getElementById("logout").submit();'>logout <span class="sr-only">logout</span></a>
+                        <a class="nav-link signout" href="javascript:oauthLogout()">logout <span class="sr-only">logout</span></a>
                         </form>
                         </li>
                     </c:if>
@@ -85,4 +101,3 @@
 
 
 
-<%--<%@ include file="login.jsp"%>--%>

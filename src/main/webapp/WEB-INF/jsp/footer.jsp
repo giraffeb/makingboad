@@ -7,11 +7,15 @@
         <p>copyright giraffeb</p>
     </div><%--END_DIV: footer_area--%>
 </footer>
-</body>
 
+<%--table event --%>
 <script>
     function table_row_click_event(){
         let table = document.getElementById("post_list_table");
+        if(table === null){
+            return;
+        }
+
         let rows = table.getElementsByTagName("tr");
 
         for(let row of rows){
@@ -19,7 +23,7 @@
         }
     }
 
-
     table_row_click_event();
 </script>
+</body>
 </html>

@@ -2,12 +2,15 @@
 <%@ page pageEncoding="utf-8" %>
 
 <%@ include file="header.jsp"%>
+
+
 <div class="container">
     <h3>login Form</h3>
+
     <form action="login" method="post">
         <div class="form-group">
             <label >ID : </label>
-            <input type="text" class="form-control" placeholder="Enter ID" name="username">
+            <input type="text" class="form-control" placeholder="Enter ID" name="userId">
         </div>
         <div class="form-group">
             <label >PW : </label>
@@ -20,7 +23,16 @@
             <a class="btn btn-danger text-white" href="signup">회원가입</a>
         </div>
     </form>
-</div>
+    <div id="social_login" style="text-align: center">
+        <form id="snslogin" action="snslogin" method="post">
+            <input id="sns_type" type="hidden" name="sns_type" >
+            <input id="idtoken" type="hidden" name="idtoken" >
+        </form>
+        <div id="my-signin2" style="display: inline-block;" ></div>
+        <div id="fb-root"></div>
+        <div class="fb-login-button" data-onlogin="javascript:facebookLogin()" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+    </div>
 
+</div>
 
 <%@include file="footer.jsp"%>

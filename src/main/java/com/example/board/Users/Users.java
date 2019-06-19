@@ -18,7 +18,14 @@ public class Users {
     @Column(name = "USER_NO")
     private int userNo;
 
+    @ManyToOne
+    @JoinColumn(referencedColumnName= "typeNo",foreignKey = @ForeignKey(name = "usertype_user_fk_key"))
+    private UserType userType;
+
     @Column(nullable = false, unique = true)
+    private String userId;
+
+    @Column(nullable = false)
     private String username;
 
     @Column
