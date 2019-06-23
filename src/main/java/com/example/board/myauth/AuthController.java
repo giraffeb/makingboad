@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,6 +44,8 @@ public class AuthController {
 
     Logger logger = LoggerFactory.getLogger(AuthController.class);
 
+    @Autowired
+    private ServletContext servletContext;
 
     private UsersRepository userRepository;
     private AuthService authService;
@@ -60,9 +63,12 @@ public class AuthController {
         if (session.getAttribute("username") != null) {
             return "redirect:/";
         }
+
+        System.out.println("#CONTEXT PATH: "+servletContext.getContextPath());
         //네이버 로그인 api
         String clientId = "XxJkIuBkesXAxBPGPPSh";//애플리케이션 클라이언트 아이디값";
-        String redirectURI = URLEncoder.encode("http://localhost:8080/naver_callback", "UTF-8");
+//        String redirectURI = URLEncoder.encode("http://localhost:8080/naver_callback", "UTF-8");
+        String redirectURI = URLEncoder.encode("https://giraffeb.org/makingboard/naver_callback", "UTF-8");
         SecureRandom random = new SecureRandom();
         String state = new BigInteger(130, random).toString();
         String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -77,7 +83,8 @@ public class AuthController {
         //카카오 api
         ///oauth/authorize?client_id={app_key}&redirect_uri={redirect_uri}&response_type=code
         String kakaiAppKey = "694e2374c8021b29f8258627d13a2c0a";
-        String kakaoRedirectUrl = "http://localhost:8080/kakao_callback";
+//        String kakaoRedirectUrl = "http://localhost:8080/kakao_callback";
+        String kakaoRedirectUrl = "https://giraffeb.org/makingboard/kakao_callback";
         String kakaoApiUrl = "https://kauth.kakao.com/oauth/authorize";
         kakaoApiUrl += "?client_id="+kakaiAppKey;
         kakaoApiUrl += "&redirect_uri="+kakaoRedirectUrl;

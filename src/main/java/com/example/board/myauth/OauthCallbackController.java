@@ -4,6 +4,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -47,7 +48,8 @@ public class OauthCallbackController {
         String clientSecret = "xOnt6jkH7J";//애플리케이션 클라이언트 시크릿값";
         String code = request.getParameter("code");
         String state = request.getParameter("state");
-        String redirectURI = URLEncoder.encode("http://localhost:8080/naver_callback", "UTF-8");
+//        String redirectURI = URLEncoder.encode("http://localhost:8080/naver_callback", "UTF-8");
+        String redirectURI = URLEncoder.encode("https://giraffeb.org/makingboard/naver_callback", "UTF-8");
 
         String apiURL;
         apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
@@ -69,7 +71,8 @@ public class OauthCallbackController {
     @GetMapping("/kakao_callback")
     public String kakaoCallback(HttpServletRequest request
                                 , HttpServletResponse response
-                                , HttpSession session) throws IOException {
+                                , HttpSession session
+                                , ServletContext context) throws IOException {
         System.out.println("kakao_callback call");
 
         //#1. request auth code
@@ -77,7 +80,9 @@ public class OauthCallbackController {
         //#2. request access token
 //        https://kauth.kakao.com//oauth/token/
         String kakaoAppKey = "694e2374c8021b29f8258627d13a2c0a";
-        String redirectUri = URLEncoder.encode("http://localhost:8080/kakao_callback", "utf-8");
+//        String redirectUri = URLEncoder.encode("https://giraffeb.org//kakao_callback", "utf-8");
+        System.out.println("#CONTEXT PATH : "+context.getContextPath());
+        String redirectUri = URLEncoder.encode("https://giraffeb.org/makingboard/kakao_callback", "utf-8");
         String accessTokenUrl = "https://kauth.kakao.com/oauth/token?";
         String authCode = request.getParameter("code");
         System.out.println("authcode->"+authCode);
