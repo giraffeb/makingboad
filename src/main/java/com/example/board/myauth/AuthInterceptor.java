@@ -30,7 +30,6 @@ public class AuthInterceptor implements HandlerInterceptor {
 
         if(cookies != null){
             for(Cookie cookie :  cookies){
-                System.out.println("#Cookie name -> "+cookie.getName());
                 if(cookie.getName().equals("mymymy")){
                     String jwt = cookie.getValue();
 

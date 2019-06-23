@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 import java.util.Map;
@@ -115,8 +116,9 @@ public class PostController {
 
     @PostMapping("/writePost")
     public String writePost(@RequestParam Map<String, Object> params,
-                            HttpSession session){
-        postService.writePost(params, session);
+                            HttpSession session,
+                            HttpServletRequest request){
+        postService.writePost(params, session, request);
 
         return "redirect:/";
     }

@@ -1,5 +1,10 @@
 package com.example.board;
 
+import com.example.board.Users.Users;
+import com.example.board.Users.UsersRepository;
+import com.example.board.myauth.AuthService;
+import com.example.board.myauth.OauthService;
+import com.example.board.post.Post;
 import com.example.board.post.PostRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.annotation.Order;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -33,6 +39,16 @@ public class PostTest {
     @Autowired
     PostRepository postRepository;
 
+    @Autowired
+    AuthService authService;
+
+    @Autowired
+    OauthService oauthService;
+
+    @Autowired
+    UsersRepository usersRepository;
+
+    private MockHttpServletResponse response;
     private MockHttpSession session;
 
     @Autowired
@@ -43,9 +59,15 @@ public class PostTest {
     @Before
     public void setUp() {
 
+        response = new MockHttpServletResponse();
         session = new MockHttpSession();
-        session.setAttribute("username", "giraffeb");
-        lastPostId = postRepository.getLastPostByUserId(1).getPost_id();
+
+        Users tempUser = usersRepository.findByUserId("hello").get();
+        authService.createAuth(response, session, tempUser);
+        Post tempPost = postRepository.getLastPostByUserNo(tempUser.getUserNo());
+        System.out.println(tempPost);
+        lastPostId = tempPost.getPost_id();
+
 
     }
 
@@ -62,14 +84,17 @@ public class PostTest {
     }
 
     @Test
+    @Transactional
     public void 게시물_작성하기() throws Exception {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("title", "This is test title.");
         params.add("content", "This is test content.");
 
 
-        mvc.perform(get("/post")
+        mvc.perform(post("/writePost")
                 .params(params)
+                .cookie(response.getCookie("mymymy"))
+                .session(session)
         ).andExpect(status().is(302))
                 .andDo(print());
     }
@@ -80,6 +105,7 @@ public class PostTest {
 
         mvc.perform(get("/post")
                 .param("post_id", String.valueOf(lastPostId))
+                .cookie(response.getCookie("mymymy"))
                 .session(session)
                 ).andExpect(status().isOk())
                 .andDo(print());
@@ -88,7 +114,8 @@ public class PostTest {
     @Test
     public void 게시물_리스트_가져오기() throws Exception {
         mvc.perform(get("/")
-                    .session(session)
+                .cookie(response.getCookie("mymymy"))
+                .session(session)
                 ).andExpect(status().isOk())
                 .andDo(print());
     }
@@ -96,8 +123,10 @@ public class PostTest {
 
 
     @Test
+    @Transactional
     public void 게시물_수정하기() throws Exception {
         mvc.perform(post("/updatePost")
+                .cookie(response.getCookie("mymymy"))
                 .session(session)
                 .param("post_id", String.valueOf(lastPostId))
                 .param("title", "change test")
@@ -108,12 +137,14 @@ public class PostTest {
 
 
     @Test
+    @Transactional
     public void 게시물_삭제하기() throws Exception {
 //        가장 최근 게시물 삭제하기.
 //        내가 작성한 글의 아이디를 가져올 수 있어야 한다. -> 현재 불가능
 
 
         mvc.perform(post("/deletePost")
+                .cookie(response.getCookie("mymymy"))
                 .session(session)
                 .param("post_id", String.valueOf(lastPostId))
         ).andExpect(status().is(302))

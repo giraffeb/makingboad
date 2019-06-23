@@ -13,5 +13,5 @@ public interface PostRepository  extends JpaRepository<Post, Integer> {
     public int getMaxPageNumber();
 
     @Query(value="SELECT p.* FROM post p WHERE p.writer_user_no = ?1 ORDER BY p.post_id DESC LIMIT 1", nativeQuery = true)
-    public Post getLastPostByUserId(int user_id);
+    public Post getLastPostByUserNo(int user_no);
 }

@@ -31,6 +31,13 @@
         <div id="my-signin2" style="display: inline-block;" ></div>
         <div id="fb-root"></div>
         <div class="fb-login-button" data-onlogin="javascript:facebookLogin()" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+        <div>
+
+            <a href="${naver_oauth}" target="_self"><img style="width:20%; margin: 5px;" src="/img/btn/naver_account_login_narrow_green.png"></a>
+        </div>
+        <div>
+            <a href="${kakao_oauth}" target="_self"><img style="width:20%; margin:5px;" src="/img/btn/kakao_account_login_btn_medium_narrow.png"></a>
+        </div>
     </div>
 
 </div>

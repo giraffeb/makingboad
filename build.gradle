@@ -23,8 +23,8 @@ archivesBaseName = 'makingboard'
 group = 'com.example'
 //version = '0.0.1-SNAPSHOT'
 
-targetCompatibility = 1.8
-sourceCompatibility = 1.8
+targetCompatibility = 1.10
+sourceCompatibility = 1.10
 
 repositories {
     mavenCentral()

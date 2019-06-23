@@ -24,6 +24,7 @@
     }
 
     table_row_click_event();
+
 </script>
 </body>
 </html>

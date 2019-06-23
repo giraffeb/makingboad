@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
@@ -122,13 +123,20 @@ public class PostService {
 
 
     public void writePost(Map<String,Object> params,
-                          HttpSession session) {
+                          HttpSession session,
+                          HttpServletRequest request) {
 
         String title = (String)params.get("title");
         String content = (String)params.get("content");
 
-        Users user = userRepository.findUserByUsername((String)session.getAttribute("username"))
-                                    .get();
+        //TODO: session 기반에서 jwt 사용 기반으로 변경되었으므로, 이것도 그에 맞게 변경합시다 어떻게 처리해야 될 지는 생각해보고.
+
+
+        System.out.println("#SESSION userid->"+session.getAttribute("userid"));
+        System.out.println("#SESSION username->"+session.getAttribute("username"));
+        Users user = userRepository.findByUserId((String)session.getAttribute("userid"))
+                .get();
+
 
         Post newPost = new Post(user, title, content);
         postRepository.save(newPost);

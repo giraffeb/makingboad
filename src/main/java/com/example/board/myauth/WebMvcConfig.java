@@ -17,6 +17,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(authInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/js/**")
+                .excludePathPatterns("/img/**")
+                .excludePathPatterns("/naver_callback","/kakao_callback")
                 .excludePathPatterns("/snslogin")
                 .excludePathPatterns("/login","/signup");
     }

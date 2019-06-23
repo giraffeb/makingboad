@@ -22,18 +22,23 @@ function facebookFecLoginStatus(){
 
 function facebookLogin(){
     console.log("login complete");
-
-    FB.getLoginStatus(function(response){
-        console.log("Hello status");
-        console.log(response.status);
-
+    FB.login(function(response){
         if(response.status == "connected"){
             document.getElementById("sns_type").value = "facebook";
             document.getElementById("idtoken").value = response.authResponse.accessToken;
             document.getElementById("snslogin").submit();
 
         }
+    }, {scope: "public_profile"});
+
+/*
+    FB.getLoginStatus(function(response){
+        console.log("Hello status");
+        console.log(response.status);
+
+
     })
+*/
 
 };
 
