@@ -72,7 +72,7 @@ public class OauthCallbackController {
     public String kakaoCallback(HttpServletRequest request
                                 , HttpServletResponse response
                                 , HttpSession session
-                                , ServletContext context) throws IOException {
+                                ) throws IOException {
         System.out.println("kakao_callback call");
 
         //#1. request auth code
@@ -81,7 +81,6 @@ public class OauthCallbackController {
 //        https://kauth.kakao.com//oauth/token/
         String kakaoAppKey = "694e2374c8021b29f8258627d13a2c0a";
 //        String redirectUri = URLEncoder.encode("https://giraffeb.org//kakao_callback", "utf-8");
-        System.out.println("#CONTEXT PATH : "+context.getContextPath());
         String redirectUri = URLEncoder.encode("https://giraffeb.org/makingboard/kakao_callback", "utf-8");
         String accessTokenUrl = "https://kauth.kakao.com/oauth/token?";
         String authCode = request.getParameter("code");

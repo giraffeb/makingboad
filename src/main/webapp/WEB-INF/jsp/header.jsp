@@ -40,9 +40,6 @@
 
     <style type="text/css">
         "${pageContext.request.contextPath}"
-        <%= request.getContextPath() %>
-        <%= request.getRequestURL() %>
-        <%= request.getRequestURL() %>
         /*#main_area{*/
         /*width: 850px;*/
         /*}*/
