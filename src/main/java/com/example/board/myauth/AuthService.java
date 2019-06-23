@@ -4,30 +4,17 @@ package com.example.board.myauth;
 import com.example.board.Users.UserTypeRepository;
 import com.example.board.Users.Users;
 import com.example.board.Users.UsersRepository;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
 import io.jsonwebtoken.*;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.*;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.security.GeneralSecurityException;
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @Component
