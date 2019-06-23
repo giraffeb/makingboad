@@ -7,10 +7,11 @@
 
 <%@ page pageEncoding="utf-8" %>
 
+<c:set var="appPath" value="${pageContext.request.contextPath}" ></c:set>
 <html>
 <%--<%@ include file="login.jsp"%>--%>
 <head>
-    <title>Hello JSP board</title>
+    <title>Hello JSP board - "${appPath}"</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,13 +24,13 @@
     <%--    google oauth api--%>
     <script src="https://apis.google.com/js/platform.js" defer></script>
     <%-- google api javascript code--%>
-    <script src="/js/google_oauth_main.js" charset="utf-8" defer onload="googleInit()"></script>
+    <script src="${pageContext.request.contextPath}/js/google_oauth_main.js" charset="utf-8" defer onload="googleInit()"></script>
 
     <%--facebook oauth api--%>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.3&appId=2208086505911469&autoLogAppEvents=1"></script>
-    <script src="/js/facebook_oauth_main.js" charset="utf-8" defer onload="facebookInit()"></script>
+    <script src="${pageContext.request.contextPath}/js/facebook_oauth_main.js" charset="utf-8" defer onload="facebookInit()"></script>
     <%--  oauth api  --%>
-    <script src="/js/oauth_main.js" charset="utf-8" defer></script>
+    <script src="${pageContext.request.contextPath}/js/oauth_main.js" charset="utf-8" defer></script>
 
     <%--  style  --%>
     <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/assets/css/docs.min.css" rossorigin="anonymous"  async defer>
@@ -38,6 +39,10 @@
 
 
     <style type="text/css">
+        "${pageContext.request.contextPath}"
+        <%= request.getContextPath() %>
+        <%= request.getRequestURL() %>
+        <%= request.getRequestURL() %>
         /*#main_area{*/
         /*width: 850px;*/
         /*}*/
@@ -58,7 +63,7 @@
     <div id="nav_area">
         <nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
 
-            <a class="navbar-brand" href="/makingboard">SimpleBoard</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}">SimpleBoard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
