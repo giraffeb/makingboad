@@ -130,6 +130,7 @@ public class AuthController {
 
         if (authService.checkAuthentication(targetUsers)) {
             System.out.println("#token create");
+            targetUsers = userRepository.findByUserId(targetUsers.getUserId()).get();
             authService.createAuth(response, session, targetUsers);
 
             resultPage = "redirect:/";
