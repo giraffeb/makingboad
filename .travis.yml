@@ -24,7 +24,7 @@ deploy:
     local_dir: deploy # before_deploy에서 생성한 디렉토리
     wait-until-deployed: true
     on:
-      repo: giraffeb/makingboard
+      repo: giraffeb/makingboad
       branch: master
 
 notifications:
