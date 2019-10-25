@@ -7,3 +7,41 @@ script: "./gradlew clean build"
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - ./gradlew cobertura coveralls
+
+before_deploy:
+  - zip -r springboot-webservice *
+  - mkdir -p deploy
+  - mv makingboard.zip deploy/makingboard.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+    bucket: giraffeb-bucket # S3 버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: public_read
+    local_dir: deploy # before_deploy에서 생성한 디렉토리
+    wait-until-deployed: true
+    on:
+      repo: giraffeb/makingboad
+      branch: master
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+    bucket: giraffeb-bucket # S3 버킷
+    key: makingboard.zip # S3 버킷에 저장된 springboot-webservice.zip 파일을 EC2로 배포
+    bundle_type: zip
+    application: making_board # 웹 콘솔에서 등록한 CodeDeploy 어플리케이션
+    deployment_group: personal_project # 웹 콘솔에서 등록한 CodeDeploy 배포 그룹
+    region: ap-northeast-2
+    wait-until-deployed: true
+    on:
+      repo: giraffeb/makingboad
+      branch: master
+
+notifications:
+  email:
+    recipients:
+      - jojoldu@gmail.com
