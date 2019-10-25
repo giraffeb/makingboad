@@ -9,9 +9,9 @@ after_success:
   - ./gradlew cobertura coveralls
 
 before_deploy:
-  - zip -r makingboard *
+  #- zip -r makingboard *
   - mkdir -p deploy
-  - mv makingboard.zip deploy/makingboard.zip
+  - mv build/libs/makingboard.war deploy/makingboard.war
 
 deploy:
   - provider: s3
