@@ -9,7 +9,7 @@ after_success:
   - ./gradlew cobertura coveralls
 
 before_deploy:
-  - zip -r springboot-webservice *
+  - zip -r makingboard *
   - mkdir -p deploy
   - mv makingboard.zip deploy/makingboard.zip
 
