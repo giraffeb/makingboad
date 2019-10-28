@@ -19,7 +19,7 @@ before_deploy:
   - mkdir -p output
   - mv build/libs/makingboard.war output/makingboard.war
   - docker build -t giraffeb/makingboard .
-  - docker save -o makingboard.tar
+  - docker save -o makingboard.tar giraffeb/makingboard
 
 deploy:
   - provider: s3
