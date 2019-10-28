@@ -8,10 +8,17 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
   - ./gradlew cobertura coveralls
 
+#docker
+services:
+  - docker
+
+
 before_deploy:
   #- zip -r makingboard *
   - mkdir -p deploy
-  - mv build/libs/makingboard.war deploy/makingboard.war
+  - mv build/libs/makingboard.war output/makingboard.war
+  - docker build -t giraffeb/makingboard .
+  - docker save -o makingboard.tar
 
 deploy:
   - provider: s3
