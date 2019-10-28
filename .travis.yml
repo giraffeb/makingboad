@@ -7,19 +7,24 @@ script: "./gradlew clean build"
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - ./gradlew cobertura coveralls
-
-#docker
-services:
-  - docker
-
-
-before_deploy:
-  #- zip -r makingboard *
   - mkdir -p deploy
   - mkdir -p output
   - mv build/libs/makingboard.war output/makingboard.war
   - docker build -t giraffeb/makingboard .
   - docker save -o deploy/makingboard.tar giraffeb/makingboard
+
+#docker
+services:
+  - docker
+
+#
+#before_deploy:
+#  #- zip -r makingboard *
+#  - mkdir -p deploy
+#  - mkdir -p output
+#  - mv build/libs/makingboard.war output/makingboard.war
+#  - docker build -t giraffeb/makingboard .
+#  - docker save -o deploy/makingboard.tar giraffeb/makingboard
 
 deploy:
   - provider: s3
