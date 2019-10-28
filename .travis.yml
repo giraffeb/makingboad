@@ -35,6 +35,20 @@ deploy:
       repo: giraffeb/makingboad
       branch: master
 
+  - provider: codedeploy # AWS CodeDeploy를 의미
+      access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+      secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+      bucket: giraffeb-bucket # AWS CodeDeploy가 다운로드 받은 버킷
+      key: makingboard.tar # 해당 버킷에 저장되어 있는 파일 이름
+      bundle_type: tar # 버킷에 저장되어 있는 파일의 확장자
+      application: making_board # AWS 배포 애플리케이션
+      deployment_group: personal_project # AWS 배포 애플리케이션에 만들어져 있는 배포 그룹
+      region: ap-northeast-2
+      wait-until-deployed: true
+      on:
+        repo: giraffeb/makingboad
+        branch: master
+
 notifications:
   email:
     recipients:
