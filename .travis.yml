@@ -16,6 +16,7 @@ services:
 before_deploy:
   #- zip -r makingboard *
   - mkdir -p deploy
+  - mkdir -p output
   - mv build/libs/makingboard.war output/makingboard.war
   - docker build -t giraffeb/makingboard .
   - docker save -o makingboard.tar

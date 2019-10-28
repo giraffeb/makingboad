@@ -12,7 +12,7 @@ RUN yum install -y java-11-openjdk-devel.x86_64
 
 CMD mkdir /deploy/makingboard
 
-COPY ./deploy/makingboard.war /deploy/makingboard/makingboard.war
+COPY ./output/makingboard.war /deploy/makingboard/makingboard.war
 
 #COPY ./start-server.sh /usr/local/bin
 #RUN ln -s /usr/local/bin/start-server.sh /start-server.sh
